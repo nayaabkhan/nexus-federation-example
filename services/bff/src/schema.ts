@@ -1,4 +1,4 @@
-import { interfaceType, objectType, makeSchema, queryType } from 'nexus'
+import { interfaceType, objectType, makeSchema } from 'nexus'
 import { transformSchemaFederation } from 'graphql-transform-federation'
 
 interface User {
@@ -40,20 +40,8 @@ const User = objectType({
   },
 })
 
-const Query = queryType({
-  definition(t) {
-    t.field('premiumUsers', {
-      type: User,
-      list: [false],
-      resolve() {
-        return data.filter(u => u.showPremiumBanner)
-      },
-    })
-  },
-})
-
 const schema = makeSchema({
-  types: [Node, User, Query],
+  types: [Node, User],
   outputs: false,
 })
 

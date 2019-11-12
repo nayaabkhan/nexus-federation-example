@@ -1,4 +1,4 @@
-import { interfaceType, objectType, makeSchema, queryType } from 'nexus'
+import { interfaceType, objectType, makeSchema } from 'nexus'
 import { transformSchemaFederation } from 'graphql-transform-federation'
 
 interface Score {
@@ -40,18 +40,8 @@ const User = objectType({
   },
 })
 
-const Query = queryType({
-  definition(t) {
-    t.int('highest', o => {
-      const highSeen = 0
-      const userWithHighest = data.find(u => u.score > highSeen)
-      return userWithHighest!.score
-    })
-  },
-})
-
 const schema = makeSchema({
-  types: [Node, User, Query],
+  types: [Node, User],
   outputs: false,
 })
 
