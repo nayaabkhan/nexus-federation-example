@@ -10,12 +10,10 @@
     "start:bff": "cd services/bff && yarn dev",
     "start-services": "concurrently \"yarn:start:*\"",
     "start-gateway": "ts-node-dev --no-notify --respawn src/gateway.ts",
-    "start": "node dist/gateway.js",
-    "postinstall": "lerna bootstrap"
+    "start": "node dist/gateway.js"
   },
   "devDependencies": {
-    "concurrently": "latest",
-    "lerna": "latest"
+    "concurrently": "latest"
   },
   "dependencies": {
     "@apollo/gateway": "^0.10.8",
