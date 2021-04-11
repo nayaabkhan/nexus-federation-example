@@ -3,7 +3,8 @@
     "outDir": "dist",
     "rootDir": "src",
     "lib": ["esnext"],
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true
   },
   "include": ["src/gateway.ts"]
 }

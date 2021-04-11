@@ -8,11 +8,11 @@
     "start:domain": "cd services/domain && yarn dev",
     "start:score": "cd services/score && yarn dev",
     "start:bff": "cd services/bff && yarn dev",
-    "start-services": "concurrently \"yarn:start:*\"",
-    "start-gateway": "ts-node-dev --no-notify --respawn src/gateway.ts",
-    "start": "node dist/gateway.js"
+    "start:gateway": "ts-node-dev --no-notify --respawn src/gateway.ts",
+    "start": "concurrently \"yarn:start:*\""
   },
   "devDependencies": {
+    "@types/wait-on": "^5.2.0",
     "concurrently": "latest"
   },
   "dependencies": {
@@ -22,7 +22,8 @@
     "graphql": "^14.5.8",
     "ts-node": "8.5.0",
     "ts-node-dev": "1.0.0-pre.44",
-    "typescript": "3.7.2"
+    "typescript": "3.7.2",
+    "wait-on": "^5.3.0"
   },
   "workspaces": [
     "services/*"

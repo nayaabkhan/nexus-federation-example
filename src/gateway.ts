@@ -1,5 +1,6 @@
 import { ApolloServer } from 'apollo-server'
 import { ApolloGateway } from '@apollo/gateway'
+import waitOn from 'wait-on'
 
 const gateway = new ApolloGateway({
   serviceList: [
@@ -9,7 +10,7 @@ const gateway = new ApolloGateway({
   ],
 })
 
-;(async () => {
+waitOn({ resources: ['tcp:4001', 'tcp:4002', 'tcp:4003'] }, async () => {
   const { schema, executor } = await gateway.load()
 
   const server = new ApolloServer({ schema, executor })
@@ -17,4 +18,4 @@ const gateway = new ApolloGateway({
   server.listen().then(({ url }) => {
     console.log(`🚀 Server ready at ${url}`)
   })
-})()
+})
